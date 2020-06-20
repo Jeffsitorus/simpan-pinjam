@@ -49,7 +49,8 @@
                         <a href="<?= site_url('peminjaman/edit/' . $pinjam['id']); ?>" class="btn btn-purple"><i class="fas fa-edit"></i> Edit</a>
                         <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $pinjam['id'] ?>"><i class="fas fa-trash"></i> Hapus</a>
                       <?php else : ?>
-                        <a href="#" data-toggle="modal" data-target="#detail<?= $pinjam['id']; ?>" class="btn btn-info"><i class="fas fa-eye"></i> Lihat Detail</a>
+                        <!-- <a href="" class="btn btn-success btn-sm"><i class="fas fa-paper-plane"></i> Cicil</a> -->
+                        <a href="#" data-toggle="modal" data-target="#detail<?= $pinjam['id']; ?>" class="btn btn-info btn-sm"><i class="fas fa-eye"></i> Lihat Detail</a>
                       <?php endif ?>
                     </td>
                   </tr>
