@@ -25,7 +25,7 @@ class Auth extends CI_Controller
       'required'    => 'Password tidak boleh kosong!',
     ]);
     if ($this->form_validation->run() == false) {
-      $this->load->view('auth/login');
+      $this->load->view('auth/login_admin');
     } else {
       $username   = $this->input->post('username');
       $password   = md5($this->input->post('password'));
@@ -136,6 +136,12 @@ class Auth extends CI_Controller
   {
     $this->session->sess_destroy();
     redirect('auth','refresh');
+  }
+
+  public function keluar()
+  {
+    $this->session->sess_destroy();
+    redirect('auth/login','refresh');
   }
 }
 /* End of file auth.php */

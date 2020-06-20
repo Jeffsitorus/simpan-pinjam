@@ -6,7 +6,11 @@
     <div class="page-breadcrumb">
       <div class="row">
         <div class="col-12 align-self-center">
+          <?php if($user['upload_ktp'] == null) : ?>
+          <a href="<?= site_url('home/lengkapi_data'); ?>" class="btn btn-purple btn-lg"> Tambah Simpanan</a>
+          <?php else: ?>
           <a href="<?= site_url('simpanan/tambah'); ?>" class="btn btn-purple btn-lg"> Tambah Simpanan</a>
+          <?php endif; ?>
         </div>
       </div>
       <?php if (!empty($this->session->flashdata('success'))) : ?>

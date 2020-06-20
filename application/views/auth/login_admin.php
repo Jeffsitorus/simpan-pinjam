@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>/assets/images/favicon.png">
-  <title>Simpan Pinjam - Login</title>
+  <title>Simpan Pinjam - Login Admin</title>
   <link href="<?= base_url() ?>/assets/dist/css/style.min.css" rel="stylesheet">
 </head>
 
@@ -34,7 +34,7 @@
             <form class="mt-4" action="<?= site_url('auth') ?>" method="POST">
               <div class="row">
                 <div class="col-lg-12">
-                  <?php if(!empty($this->session->flashdata('error'))) : ?>
+                  <?php if (!empty($this->session->flashdata('error'))) : ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -60,7 +60,7 @@
                   <button type="submit" class="btn btn-block mt-4 btn-primary">Login</button>
                 </div>
                 <div class="col-lg-12 text-center mt-5">
-                  Belum punya akun? <a href="<?= site_url('auth/register') ?>" class="text-danger">Daftar Sekarang!</a>
+                  Masuk sebagai administrator Simpan-Pinjam
                 </div>
               </div>
             </form>

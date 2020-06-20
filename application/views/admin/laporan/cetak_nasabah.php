@@ -5,7 +5,7 @@
   <title>Nasabah Simpan Pinjam Purwakarta</title>
   <style>
     table {
-      margin: 20px auto;
+      width: 100%;
       border-collapse: collapse;
       box-sizing: border-box;
     }

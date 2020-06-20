@@ -45,7 +45,7 @@
             <a class="dropdown-item" href="<?= site_url('home/ubah_password'); ?>"><i data-feather="settings" class="svg-icon mr-2 ml-1"></i>
               Pengaturan</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="<?= site_url('auth/logout'); ?>"><i data-feather="power" class="svg-icon mr-2 ml-1"></i>
+            <a class="dropdown-item" href="<?= site_url('auth/keluar'); ?>"><i data-feather="power" class="svg-icon mr-2 ml-1"></i>
               Logout</a>
           </div>
         </li>

@@ -1,6 +1,4 @@
 <?php 
-
-
 class Laporan extends CI_Controller
 {
   public function __construct()
@@ -25,7 +23,7 @@ class Laporan extends CI_Controller
 
   public function cetak_nasabah()
   {
-    $data['nasabah']    = $this->app->getNasabah();
+    $data['nasabah']    = $this->app->getDataNasabah();
     $this->load->view('admin/laporan/cetak_nasabah', $data);
     $this->load->library('dompdf_gen');
     $html         = $this->output->get_output();

@@ -129,6 +129,10 @@ class Home extends CI_Controller
           $data['user']  = $this->db->get_where('nasabah', ['id_nasabah' => $this->session->userdata('id_nasabah')])->row_array();
           $this->load->view('nasabah/edit_profil', $data);
         } else {
+          $data['user'] = $this->db->get_where('nasabah', ['id_nasabah' => $this->session->userdata('id_nasabah')])->row_array();
+          if($data['user']['foto'] != 'default.png') {
+            unlink(FCPATH. './assets/images/upload/'. $data['user']['foto']);
+          }
           $upload     = array('upload_data' => $this->upload->data());
           $nik        = trim($this->input->post('nik'));
           $nama       = htmlspecialchars($this->input->post('nama'));

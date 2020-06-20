@@ -38,7 +38,7 @@
                                               } ?>" href="<?= site_url('home/ubah_password'); ?>" aria-expanded="false"><i data-feather="settings" class="feather-icon"></i>
             <span class="hide-menu">Pengaturan</span></a>
         </li>
-        <li class="sidebar-item"> <a class="sidebar-link sidebar-link text-danger" href="#" data-target="#logout" data-toggle="modal" aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span class="hide-menu">Logout</span></a></li>
+        <li class="sidebar-item"> <a class="sidebar-link sidebar-link text-danger" href="#" data-target="#keluar" data-toggle="modal" aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span class="hide-menu">Logout</span></a></li>
       </ul>
     </nav>
   </div>

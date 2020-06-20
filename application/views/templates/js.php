@@ -42,3 +42,23 @@
     </div>
   </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="keluar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Anda yakin ingin keluar?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Klik ya jika ingin keluar, Batal jika tidak ingin keluar!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
+        <a href="<?= site_url('auth/keluar') ?>" class="btn btn-purple">Ya, Keluar.</a>
+      </div>
+    </div>
+  </div>
+</div>

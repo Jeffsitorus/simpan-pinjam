@@ -6,9 +6,7 @@
   <style>
     table {
       width: 100%;
-      margin: 20px auto;
       border-collapse: collapse;
-      box-sizing: border-box;
     }
 
     table,
@@ -19,7 +17,6 @@
       padding: 8px;
       font-size: 12px;
     }
-
     h4,
     p {
       text-align: center;

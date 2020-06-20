@@ -64,7 +64,7 @@
                   <button type="submit" class="btn btn-block btn-primary">Daftar</button>
                 </div>
                 <div class="col-lg-12 text-center mt-5">
-                  Sudah punya akun? <a href="<?= site_url('auth'); ?>" class="text-danger">Login Sekarang!</a>
+                  Sudah punya akun? <a href="<?= site_url('auth/login'); ?>" class="text-danger">Login Sekarang!</a>
                 </div>
               </div>
             </form>

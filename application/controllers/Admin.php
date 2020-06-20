@@ -88,10 +88,10 @@ class Admin extends CI_Controller
         'matches'     => 'Konfirmasi password tidak cocok.'
       ]);
       if ($this->form_validation->run() == false) {
-        $data['user']   = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
+        $data['user']   = $this->db->get_where('admin', ['id' => $this->session->userdata('id')])->row_array();
         $this->load->view('admin/ubah_password', $data);
       } else {
-        $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
+        $data['user'] = $this->db->get_where('admin', ['id' => $this->session->userdata('id')])->row_array();
         $pass_lama    = md5($this->input->post('password', true));
         $pass_baru    = md5($this->input->post('password1', true));
         if ($data['user']['password'] != $pass_lama) {
@@ -103,11 +103,69 @@ class Admin extends CI_Controller
             redirect('admin/ubah_password', 'refresh');
           } else {
           $this->db->set('password', $pass_baru);
-          $this->db->where('username', $this->session->userdata('username'));
+          $this->db->where('id', $this->session->userdata('id'));
           $this->db->update('admin');
           $this->session->set_flashdata('success', 'Password berhasil diubah.');
           redirect('admin/ubah_password', 'refresh');
         }
+      }
+    }
+  }
+
+  public function edit_profil()
+  {
+    $this->form_validation->set_rules('nama', 'Nama', 'trim|required', [
+      'required'    => 'Nama lengkap harus diisi',
+    ]);
+    $this->form_validation->set_rules('username', 'username', 'trim|required', [
+      'required'    => 'Username harus diisi',
+    ]);
+    if ($this->form_validation->run() == false) {
+      $data['user']  = $this->db->get_where('admin', ['id' => $this->session->userdata('id')])->row_array();
+      $this->load->view('admin/edit_profil', $data);
+    } else {
+      if ($_FILES['foto']['name']) {
+        $config['upload_path']    = './assets/images/upload/';
+        $config['allowed_types']  = 'gif|jpg|png|jpeg';
+        $config['max_size']       = '1024';
+        $config['file_name']      = 'img_' . time();
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('foto')) {
+          $error = $this->upload->display_errors();
+          $this->session->set_flashdata('error_upload', $error);
+          $data['user']  = $this->db->get_where('admin', ['id' => $this->session->userdata('id')])->row_array();
+          $this->load->view('admin/edit_profil', $data);
+        } else {
+          $data['user'] = $this->db->get_where('admin', ['id' => $this->session->userdata('id')])->row_array();
+          if ($data['user']['foto'] != 'default.png') {
+            unlink(FCPATH . './assets/images/upload/' . $data['user']['foto']);
+          }
+          $upload     = array('upload_data' => $this->upload->data());
+          $nama       = htmlspecialchars($this->input->post('nama'));
+          $username   = htmlspecialchars($this->input->post('username'));
+          $data   = [
+            'nama'      => $nama,
+            'username'  => $username,
+            'foto'      => $upload['upload_data']['file_name'],
+          ];
+          $this->db->set($data);
+          $this->db->where('id', $this->session->userdata('id'));
+          $this->db->update('admin');
+          $this->session->set_flashdata('success', 'Profil berhasil diupdate');
+          redirect('admin');
+        }
+      } else {
+        $nama       = htmlspecialchars($this->input->post('nama'));
+        $username   = htmlspecialchars($this->input->post('username'));
+        $data   = [
+          'nama'      => $nama,
+          'username'  => $username,
+        ];
+        $this->db->set($data);
+        $this->db->where('id', $this->session->userdata('id'));
+        $this->db->update('admin');
+        $this->session->set_flashdata('success', 'Profil berhasil diupdate');
+        redirect('admin');
       }
     }
   }

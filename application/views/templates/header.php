@@ -33,15 +33,15 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="<?= base_url() ?>/assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle" width="40">
+            <img src="<?= base_url('/assets/images/upload/'. $user['foto']); ?>" alt="user" class="rounded-circle" width="40">
             <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span class="text-dark"><?= $this->session->userdata('nama'); ?></span> <i data-feather="chevron-down" class="svg-icon"></i></span>
           </a>
           <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
             <a class="dropdown-item" href="<?= site_url('admin') ?>"><i data-feather="user" class="svg-icon mr-2 ml-1"></i>
               My Profile</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="<?= site_url('admin') ?>"><i data-feather="settings" class="svg-icon mr-2 ml-1"></i>
-              Account Setting</a>
+            <a class="dropdown-item" href="<?= site_url('admin/edit_profil') ?>"><i data-feather="settings" class="svg-icon mr-2 ml-1"></i>
+              Edit Profil</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="<?= site_url('auth/logout') ?>"><i data-feather="power" class="svg-icon mr-2 ml-1"></i>
               Logout</a>

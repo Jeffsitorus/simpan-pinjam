@@ -18,7 +18,7 @@ class Nasabah extends CI_Controller
   public function index()
   {
     $data['nasabah']  = $this->app->getNasabah();
-    $data['user'] = $this->db->get_where('admin',['username' => $this->session->userdata('username')])->row_array();
+    $data['user'] = $this->db->get_where('admin',['id' => $this->session->userdata('id')])->row_array();
     $this->load->view('nasabah/index', $data);
   }
 
@@ -26,7 +26,7 @@ class Nasabah extends CI_Controller
   {
     $this->_rules();
     if($this->form_validation->run() == false) {
-      $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
+      $data['user'] = $this->db->get_where('admin', ['id' => $this->session->userdata('id')])->row_array();
       $this->load->view('nasabah/tambah-nasabah', $data);
     } else {
       $foto   = $_FILES['foto']['name'];
@@ -39,7 +39,7 @@ class Nasabah extends CI_Controller
         if (!$this->upload->do_upload('foto')){
           $error = $this->upload->display_errors();
           $this->session->set_flashdata('error_upload', $error);
-          $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
+          $data['user'] = $this->db->get_where('admin', ['id' => $this->session->userdata('id')])->row_array();
           $this->load->view('nasabah/tambah-nasabah', $data);
         } else{
           $upload       = array('upload_data' => $this->upload->data());
@@ -110,7 +110,7 @@ class Nasabah extends CI_Controller
     ]);
     if ($this->form_validation->run() == false) {
       $data['nasabah']  = $this->app->getIdNasabah($id);
-      $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
+      $data['user'] = $this->db->get_where('admin', ['id' => $this->session->userdata('id')])->row_array();
       $this->load->view('nasabah/edit-nasabah', $data);
     } else {
       $foto   = $_FILES['foto']['name'];
@@ -124,10 +124,10 @@ class Nasabah extends CI_Controller
           $error = $this->upload->display_errors();
           $this->session->set_flashdata('error_upload', $error);
           $data['nasabah']  = $this->app->getIdNasabah($id);
-          $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
+          $data['user'] = $this->db->get_where('admin', ['id' => $this->session->userdata('id')])->row_array();
           $this->load->view('nasabah/edit-nasabah', $data);
         } else {
-          $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
+          $data['user'] = $this->db->get_where('admin', ['id' => $this->session->userdata('id')])->row_array();
           if($data['user']['foto'] != 'default.png') {
             unlink(FCPATH . './assets/images/upload/'. $data['user']['foto']);
           }
